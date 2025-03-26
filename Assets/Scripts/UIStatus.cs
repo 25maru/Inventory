@@ -23,9 +23,16 @@ public class UIStatus : MonoBehaviour
         float totalHP = character.GetTotalStat(StatType.HP, out float baseHP, out float bonusHP);
         float totalCrit = character.GetTotalStat(StatType.CRIT, out float baseCrit, out float bonusCrit);
 
-        atkText.text = $"공격력\n<font=\"GmarketSansBold SDF\">{totalAtk} <size=15><color=#ccc>({baseAtk}+<color=#fc3>{bonusAtk}<color=#ccc>)";
-        defText.text = $"방어력\n<font=\"GmarketSansBold SDF\">{totalDef} <size=15><color=#ccc>({baseDef}+<color=#d8f>{bonusDef}<color=#ccc>)";
-        hpText.text = $"체력\n<font=\"GmarketSansBold SDF\">{totalHP} <size=15><color=#ccc>({baseHP}+<color=#d8f>{bonusHP}<color=#ccc>)";
-        critText.text = $"치명타\n<font=\"GmarketSansBold SDF\">{totalCrit}% <size=15><color=#ccc>({baseCrit}+<color=#5df>{bonusCrit}<color=#ccc>)";
+        atkText.text = $"공격력\n<font=\"GmarketSansBold SDF\">{totalAtk}";
+        if (bonusAtk != 0f) atkText.text += $" <size=15><color=#ccc>({baseAtk}+<color=#fc3>{bonusAtk}<color=#ccc>)";
+
+        defText.text = $"방어력\n<font=\"GmarketSansBold SDF\">{totalDef}";
+        if (bonusDef != 0f) defText.text += $" <size=15><color=#ccc>({baseDef}+<color=#d8f>{bonusDef}<color=#ccc>)";
+
+        hpText.text = $"체력\n<font=\"GmarketSansBold SDF\">{totalHP}";
+        if (bonusHP != 0f) hpText.text += $" <size=15><color=#ccc>({baseHP}+<color=#d8f>{bonusHP}<color=#ccc>)";
+
+        critText.text = $"치명타\n<font=\"GmarketSansBold SDF\">{totalCrit}%";
+        if (bonusCrit != 0f) critText.text += $" <size=15><color=#ccc>({baseCrit}+<color=#5df>{bonusCrit}<color=#ccc>)";
     }
 }
